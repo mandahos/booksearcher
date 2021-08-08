@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server-express');
 
-const typeDefs = qgl`
+const typeDefs = gql`
     type Book {
         _id: ID
         authors: [String]
@@ -21,7 +21,7 @@ const typeDefs = qgl`
         token: ID!
         user: User
     }
-    typeQuery {
+    type Query {
         me: User
     }
     type Mutation {
