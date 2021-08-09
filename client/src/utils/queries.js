@@ -1,4 +1,4 @@
-import gql from 'graph-tag';
+import { gql } from '@apollo/cient';
 
 export const GET_ME = gql`
 {
