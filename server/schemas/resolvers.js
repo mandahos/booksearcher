@@ -14,7 +14,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        login: async(parent, {email, password }) => {
+        login: async (parent, { email, password }) => {
             const user = await User.findOne( { email });
             if (!user) {
                 throw new AuthenticationError('Incorrect info')
@@ -35,8 +35,18 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     {_id: context.user._id},
-                    { $pull: { savedBooks: { bookId: bookId }}},
+                    { $addToSet: { savedBooks: book }},
                     { new: true }
+                )
+                return updatedUser;
+            }
+            throw new AuthinticationError('Oops, need to have logged in')
+        },
+        removeBook: async (parent, { bookId }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    {_id: context.user._id},
+                    { $pull: { savedBooks: { bookId: bookId}}},
                 )
                 return updatedUser;
             }
