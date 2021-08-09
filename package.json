@@ -8,7 +8,6 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
-    
   },
   "keywords": [],
   "author": "",
@@ -25,6 +24,7 @@
   },
   "homepage": "https://github.com/mandahos/booksearcher#readme",
   "dependencies": {
+    "@apollo/client": "^3.4.5",
     "apollo-server-express": "^2.25.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
